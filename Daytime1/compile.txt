@@ -1,0 +1,5 @@
+To compile client.cpp:
+g++ -std=c++17 -lboost_system client.cpp -o client
+
+To compile server.cpp
+g++ -std=c++17 -lboost_system server.cpp -o server
