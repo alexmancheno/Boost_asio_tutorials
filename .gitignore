@@ -1,3 +1,10 @@
+
+# no files with no extension (typically executable files)
 *
 !/**/
 !*.*
+
+# no executable files
+*.a
+*.o
+*.out
