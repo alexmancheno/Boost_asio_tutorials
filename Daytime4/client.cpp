@@ -24,18 +24,23 @@ int main(int argc, char** argv)
         boost::asio::io_context io_context;
 
         /*
-        We use an ip::udp::resolver object to find the correct remote endpoint to use based on the host and service names. The query is resitrected to return only IPv4 endpoints by the ip::udp::v4() argument.
+        We use an ip::udp::resolver object to find the correct remote endpoint to use
+        based on the host and service names. The query is resitrected to return only IPv4
+        endpoints by the ip::udp::v4() argument.
         */
         udp::resolver resolver(io_context);
         udp::resolver::query query(udp::v4(), argv[1], "daytime");
 
         /*
-        The ip::udp::resolver::resolve() function is guaranteed to return at least one endpoint in the list if it does not fail. This means it is safe to dereference the return value directly.
+        The ip::udp::resolver::resolve() function is guaranteed to return at least one
+        endpoint in the list if it does not fail. This means it is safe to dereference the
+        return value directly.
         */
         udp::endpoint receiver_endpoint = *resolver.resolve(query);
 
         /*
-        Since UDP is datagram-oriented, we will not be using a stream socket. Create an ip::udp::socket and initiate contact with the remote endpoint.
+        Since UDP is datagram-oriented, we will not be using a stream socket. Create an
+        ip::udp::socket and initiate contact with the remote endpoint.
         */
         udp::socket socket(io_context);
         socket.open(udp::v4());
@@ -44,7 +49,9 @@ int main(int argc, char** argv)
         socket.send_to(boost::asio::buffer(send_buf), receiver_endpoint);
 
         /*
-        Now, we need to be ready to accept whenever the server sends back to us. The endpoint on our side that receives the server's response will be initialised by ip::udp::socket::receive_from().
+        Now, we need to be ready to accept whenever the server sends back to us. The
+        endpoint on our side that receives the server's response will be initialised by
+        ip::udp::socket::receive_from().
         */
         boost::array<char, 128> recv_buf;
         udp::endpoint sender_endpoint;

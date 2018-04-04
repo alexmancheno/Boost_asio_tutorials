@@ -15,5 +15,6 @@
         "cctype": "cpp",
         "cstdlib": "cpp",
         "cwctype": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "Enabled"
 }

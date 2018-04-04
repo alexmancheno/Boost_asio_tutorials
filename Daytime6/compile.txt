@@ -1,0 +1,5 @@
+To compile udp_server.cpp and main.cpp into object files:
+    g++ -std=c++17 -c udp_server.cpp main.cpp
+
+To link udp_server.o and main.object and boost_system
+    g++ -std=c++17 udp_server.o main.o -lboost_system -o run.out
